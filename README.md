@@ -1,8 +1,11 @@
 mgosessions
 ===============
-An golang mgo (Mongodb) session store for martini. 
+A golang [mgo](http://labix.org/mgo). (Mongodb) session store for [Martini](https://github.com/codegangsta/martini).
 
-Since Martini uses Gorilla this store extends gorilla to create a sessions store using Mongo.
+
+
+Since Martini uses [Gorilla](https://github.com/gorilla) this store extends [Gorilla](https://github.com/gorilla) to create a sessions store using Mongo.
+
 
 The code is pretty much unmodified from the original Gorilla code on another project but it was not packaged up so I packaged it up for martini.
 
@@ -15,17 +18,17 @@ var DBSESS *mgo.Session
 
 func init() {
 
-	//middleware
+  //middleware
 
-	//db handler
-	m.Use(DB())
+  //db handler
+  m.Use(DB())
 
   //sessions
   store := mgosessions.NewMongoStore(DBSESS.DB(params["mdb"]).C("sessions"), []byte(params["secret"]))
   m.Use(sessions.Sessions("sessionid", store))
   
   //do a test
-	//testSessionFlashes(t, store)
+  //testSessionFlashes(t, store)
 
 }
 
@@ -60,7 +63,8 @@ sess would be the mgo sessions store
 ``` go
 func PostAuth(req *http.Request, w http.ResponseWriter, db *mgo.Database, sess sessions.Session) (int, []byte) {
 
-	v := session.Get("hello")
+  set := session.Set("hello")
+  get := session.Get("hello")
 }
 
 ```
