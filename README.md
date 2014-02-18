@@ -51,13 +51,16 @@ func DB() martini.Handler {
 		c.Next()
 	}
 }
+```
 
 ##In a function
 
-//db would be the database
-//and sess would be the mgo sessions tore
+db would be the database
+sess would be the mgo sessions store
+``` go
 func PostAuth(req *http.Request, w http.ResponseWriter, db *mgo.Database, sess sessions.Session) (int, []byte) {
 
 	v := session.Get("hello")
 }
 
+```
