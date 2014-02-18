@@ -13,6 +13,14 @@ The code is pretty much unmodified from the original Gorilla code on another pro
 ##Usage
 
 ``` go
+
+//You can pass a mongo connection string. This example is connecting to 3 servers
+var params = map[string]string{
+  "secret":  "biglongsecrettext",
+  "mdb":    "databasename",
+  "muri":   "mongodb://user:pass@ovdb-server-mongo-0.mgoserver.net:123,ovdb1-server-mongo-1.mgoserver.net:234,ovdb1-server-mongo-2.mgoserver.net:567"
+}
+
 //I'm using a global to store the session database but you don't need to
 var DBSESS *mgo.Session
 
